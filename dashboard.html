@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - KrishiLink</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>KrishiLink</h2>
+            <i class="fas fa-times" id="closeSidebar"></i>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="marketplace.html"><i class="fas fa-store"></i> Marketplace</a>
+            </li>
+            <li>
+                <a href="blockchain.html"><i class="fas fa-link"></i> Traceability</a>
+            </li>
+            <li>
+                <a href="crowdfunding.html"><i class="fas fa-hand-holding-usd"></i> Crowdfunding</a>
+            </li>
+            <li>
+                <a href="tokenized-farmland.html"><i class="fas fa-tractor"></i> Tokenized Farmland</a>
+            </li>
+            <li>
+                <a href="insurance.html"><i class="fas fa-shield-alt"></i> Smart Insurance</a>
+            </li>
+            <li>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <h4>John Doe</h4>
+                    <p>Farmer</p>
+                </div>
+            </div>
+            <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="left-section">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="right-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="../assets/images/avatar.jpg" alt="User">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Soil Moisture</h3>
+                        <h2>68%</h2>
+                        <p class="status good">Optimal</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Temperature</h3>
+                        <h2>28°C</h2>
+                        <p class="status good">Normal</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Humidity</h3>
+                        <h2>65%</h2>
+                        <p class="status warning">High</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Crop Health</h3>
+                        <h2>92%</h2>
+                        <p class="status good">Excellent</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Soil Moisture Chart -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Soil Moisture Levels</h3>
+                            <div class="time-filter">
+                                <button class="active">Day</button>
+                                <button>Week</button>
+                                <button>Month</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="moistureChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Activities</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon success">
+                                        <i class="fas fa-tint"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Irrigation System Activated</h4>
+                                        <p>Field A - North Section</p>
+                                        <span class="activity-time">10 mins ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon info">
+                                        <i class="fas fa-cloud-rain"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Rainfall Detected</h4>
+                                        <p>5mm in the last hour</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <h4>Pest Alert</h4>
+                                        <p>Potential pest activity detected in Field B</p>
+                                        <span class="activity-time">5 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <!-- Weather Widget -->
+                    <div class="card weather-widget">
+                        <div class="card-header">
+                            <h3>Weather Forecast</h3>
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Ahmedabad, Gujarat</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="current-weather">
+                                <div class="weather-icon">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <div class="weather-details">
+                                    <h2>32°C</h2>
+                                    <p>Sunny</p>
+                                    <p>Feels like 35°C</p>
+                                </div>
+                            </div>
+                            <div class="weather-forecast">
+                                <div class="forecast-item">
+                                    <p>Mon</p>
+                                    <i class="fas fa-sun"></i>
+                                    <p>32°C</p>
+                                </div>
+                                <div class="forecast-item">
+                                    <p>Tue</p>
+                                    <i class="fas fa-cloud-sun"></i>
+                                    <p>30°C</p>
+                                </div>
+                                <div class="forecast-item">
+                                    <p>Wed</p>
+                                    <i class="fas fa-cloud-rain"></i>
+                                    <p>28°C</p>
+                                </div>
+                                <div class="forecast-item">
+                                    <p>Thu</p>
+                                    <i class="fas fa-cloud"></i>
+                                    <p>29°C</p>
+                                </div>
+                                <div class="forecast-item">
+                                    <p>Fri</p>
+                                    <i class="fas fa-sun"></i>
+                                    <p>31°C</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alerts -->
+                    <div class="card alerts-widget">
+                        <div class="card-header">
+                            <h3>Alerts & Notifications</h3>
+                            <span class="badge">3 New</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert-item warning">
+                                <div class="alert-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="alert-content">
+                                    <h4>Irrigation Required</h4>
+                                    <p>Soil moisture is below optimal in Field C</p>
+                                    <span class="alert-time">Just now</span>
+                                </div>
+                            </div>
+                            <div class="alert-item info">
+                                <div class="alert-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="alert-content">
+                                    <h4>Fertilizer Reminder</h4>
+                                    <p>Time to apply fertilizer to Field A</p>
+                                    <span class="alert-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="alert-item success">
+                                <div class="alert-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="alert-content">
+                                    <h4>Harvest Ready</h4>
+                                    <p>Wheat in Field B is ready for harvest</p>
+                                    <span class="alert-time">1 day ago</span>
+                                </div>
+                            </div>
+                            <a href="#" class="view-all-alerts">View All Alerts</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

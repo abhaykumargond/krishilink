@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Insurance - KrishiLink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .insurance-container {
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section h2 {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .insurance-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .plan-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        
+        .plan-features {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .plan-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        .plan-footer {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+        
+        .how-it-works {
+            background: #f9fafc;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            gap: 2rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+            padding: 0 1rem;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .testimonials {
+            margin: 4rem 0;
+        }
+        
+        .testimonial-slider {
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 1rem;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .testimonial-text:before {
+            content: '"'
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary-color);
+            font-family: serif;
+            line-height: 1;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h5 {
+            margin: 0;
+            color: var(--secondary-color);
+        }
+        
+        .testimonial-info p {
+            margin: 0.2rem 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .slick-prev:before,
+        .slick-next:before {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .insurance-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                margin-bottom: 2rem;
+                max-width: 300px;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Header -->
+    <div id="header-placeholder"></div>
+    
+    <div class="insurance-container">
+        <div class="section-header">
+            <h1>Smart Crop Insurance</h1>
+            <p>Protect your crops against unforeseen events with our AI-powered smart insurance solutions. Get coverage that understands farming.</p>
+        </div>
+        
+        <div class="hero-section">
+            <h2>Smart Protection for Your Harvest</h2>
+            <p>Our AI-driven insurance platform uses satellite imagery, weather data, and IoT sensors to provide fair and transparent crop insurance.</p>
+            <a href="#plans" class="cta-button">View Insurance Plans</a>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Comprehensive Coverage</h3>
+                <p>Protection against droughts, floods, pests, and other agricultural risks with customizable coverage options.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI-Powered</h3>
+                <p>Advanced algorithms analyze satellite imagery and weather data to assess risks and process claims faster.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Instant Payouts</h3>
+                <p>Automated claim verification ensures quick payouts directly to your account when you need it most.</p>
+            </div>
+        </div>
+        
+        <div id="plans">
+            <div class="section-header">
+                <h2>Choose Your Insurance Plan</h2>
+                <p>Select the coverage that best fits your farming needs and budget.</p>
+            </div>
+            
+            <div class="insurance-plans">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Basic</h3>
+                        <div class="plan-price">$49<span>/month</span></div>
+                        <p>Ideal for small farms</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 5 acres coverage</li>
+                            <li><i class="fas fa-check"></i> Weather-related damage</li>
+                            <li><i class="fas fa-check"></i> Pest infestation</li>
+                            <li><i class="fas fa-check"></i> 24/7 Support</li>
+                            <li><i class="fas fa-times"></i> No disease coverage</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="cta-button" onclick="selectPlan('basic')">Select Plan</button>
+                    </div>
+                </div>
+                
+                <div class="plan-card featured-plan">
+                    <div class="plan-header" style="background: var(--primary-color);">
+                        <h3>Premium</h3>
+                        <div class="plan-price">$99<span>/month</span></div>
+                        <p>Best for medium farms</p>
+                        <div class="popular-tag">Most Popular</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 20 acres coverage</li>
+                            <li><i class="fas fa-check"></i> Weather-related damage</li>
+                            <li><i class="fas fa-check"></i> Pest & disease coverage</li>
+                            <li><i class="fas fa-check"></i> Soil health monitoring</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="cta-button" onclick="selectPlan('premium')">Select Plan</button>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Enterprise</h3>
+                        <div class="plan-price">Custom</div>
+                        <p>For large-scale farming</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited acreage</li>
+                            <li><i class="fas fa-check"></i> Comprehensive coverage</li>
+                            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check"></i> 24/7 VIP support</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <button class="cta-button" onclick="contactSales()">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="how-it-works">
+            <div class="section-header">
+                <h2>How Smart Insurance Works</h2>
+                <p>Our process is simple, transparent, and designed with farmers in mind.</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Select Your Coverage</h4>
+                    <p>Choose the insurance plan that best fits your farm's size and needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Farm Assessment</h4>
+                    <p>Our AI analyzes your farm using satellite data and IoT sensors.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Get Protected</h4>
+                    <p>Your coverage begins immediately after approval and payment.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Claim Processing</h4>
+                    <p>File claims through our app and get paid quickly when disaster strikes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <div class="section-header">
+                <h2>What Farmers Say</h2>
+                <p>Hear from farmers who trust KrishiLink Smart Insurance.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        KrishiLink's smart insurance saved my farm during the unexpected drought last season. The claim process was quick and hassle-free.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Kumar">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Rajesh Kumar</h5>
+                            <p>Cotton Farmer, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        The AI-powered risk assessment is incredibly accurate. I feel secure knowing my crops are protected with KrishiLink.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Patel">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Priya Patel</h5>
+                            <p>Rice Farmer, Punjab</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        As a small-scale farmer, I appreciate the affordable premium options. The mobile app makes managing my policy so easy.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Amit Sharma">
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Amit Sharma</h5>
+                            <p>Vegetable Farmer, Karnataka</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section" style="text-align: center; margin: 4rem 0;">
+            <h2>Ready to Protect Your Farm?</h2>
+            <p style="margin-bottom: 2rem;">Join thousands of farmers who trust KrishiLink Smart Insurance.</p>
+            <a href="#plans" class="cta-button">Get Insured Today</a>
+        </div>
+    </div>
+    
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    
+    <script>
+        // Load header and footer
+        $(function(){
+            $("#header-placeholder").load("../components/header.html");
+            $("#footer-placeholder").load("../components/footer.html");
+        });
+        
+        // Initialize testimonial slider
+        $(document).ready(function(){
+            $('.testimonial-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: false
+            });
+        });
+        
+        // Plan selection functions
+        function selectPlan(plan) {
+            // In a real app, this would redirect to a signup/payment page
+            alert(`You've selected the ${plan} plan. Redirecting to secure checkout...`);
+            // window.location.href = `/checkout?plan=${plan}`;
+        }
+        
+        function contactSales() {
+            alert('Our sales team will contact you shortly to discuss enterprise options.');
+            // In a real app, this would open a contact form or redirect to a contact page
+        }
+    </script>
+</body>
+</html>

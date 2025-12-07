@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - KrishiLink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/marketplace.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>KrishiLink</span>
+                </a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <i class="fas fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="marketplace.html" class="active">Marketplace</a></li>
+                    <li><a href="traceability.html">Traceability</a></li>
+                    <li><a href="crowdfunding.html">Crowdfunding</a></li>
+                    <li><a href="tokenized-farmland.html">Tokenized Farmland</a></li>
+                    <li><a href="insurance.html">Smart Insurance</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <div class="user-profile" style="display: none;">
+                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=2ecc71&color=fff" alt="User" class="user-avatar">
+                    <span>John Doe</span>
+                </div>
+                <a href="login.html" class="btn btn-outline" id="loginBtn">Login</a>
+                <a href="#" class="btn btn-primary" id="logoutBtn" style="display: none;" onclick="logout()">Logout</a>
+                <i class="fas fa-bars" onclick="showMenu()"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Marketplace Hero Section -->
+    <section class="marketplace-hero">
+        <div class="container">
+            <h1>Agricultural Marketplace</h1>
+            <p>Buy and sell fresh produce directly from farmers</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search for products...">
+                    <button class="btn btn-primary" onclick="searchProducts()">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="marketplace-container">
+        <div class="container">
+            <div class="marketplace-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3>Categories</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="vegetables" checked>
+                                <span>Vegetables</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="fruits" checked>
+                                <span>Fruits</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="grains" checked>
+                                <span>Grains</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="dairy" checked>
+                                <span>Dairy</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="spices" checked>
+                                <span>Spices</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Price Range</h3>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" min="0">
+                                <span>to</span>
+                                <input type="number" id="maxPrice" placeholder="Max" min="0">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceRange" min="0" max="1000" step="10" value="1000">
+                                <div class="price-labels">
+                                    <span>₹0</span>
+                                    <span>₹1000+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Location</h3>
+                        <select id="locationFilter" class="select-filter">
+                            <option value="">All Locations</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Sort By</h3>
+                        <select id="sortBy" class="select-filter" onchange="sortProducts()">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="newest">Newest</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-primary apply-filters" onclick="applyFilters()">Apply Filters</button>
+                    <button class="btn btn-outline reset-filters" onclick="resetFilters()">Reset All</button>
+                </aside>
+                
+                <!-- Products Grid -->
+                <div class="products-grid">
+                    <div class="products-header">
+                        <h2>Fresh Produce</h2>
+                        <div class="results-count">
+                            <span id="productCount">12</span> products found
+                        </div>
+                    </div>
+                    
+                    <div class="products-container" id="productsContainer">
+                        <!-- Products will be dynamically loaded here -->
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="page-btn" id="prevPage" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                        <div class="page-numbers">
+                            <span class="page-number active">1</span>
+                            <span class="page-number">2</span>
+                            <span class="page-number">3</span>
+                            <span class="page-ellipsis">...</span>
+                            <span class="page-number">5</span>
+                        </div>
+                        <button class="page-btn" id="nextPage">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalContent">
+                <!-- Modal content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-leaf"></i>
+                        <span>KrishiLink</span>
+                    </div>
+                    <p>Empowering farmers with technology to build a sustainable agricultural future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="traceability.html">Traceability</a></li>
+                        <li><a href="crowdfunding.html">Crowdfunding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 KrishiLink. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/marketplace.js"></script>
+</body>
+</html>
