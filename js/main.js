@@ -61,7 +61,7 @@ function isLoggedIn() {
 
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
+    window.location.href = 'pages/dashboard.html';
 }
 
 function showNotification(message, type = 'info') {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = window.location.pathname.split('/').pop();
     
     if (protectedPages.includes(currentPage) && !isLoggedIn()) {
-        window.location.href = 'index.html';
+        window.location.href = 'pages/dashboard.html';
         return;
     }
     
